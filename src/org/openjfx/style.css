@@ -1,0 +1,59 @@
+NoteEditor, NewNoteEditor {
+    -fx-font-size: 14;
+    -fx-align: center;
+    -fx-background-color: white;
+}
+
+NoteEditor TextField, NewNoteEditor TextField {
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+
+}
+
+NoteEditor TextField,
+NewNoteEditor TextField,
+NoteEditor TextArea,
+NewNoteEditor TextArea {
+    -fx-background-color: transparent;
+}
+
+TextArea .content {
+    -fx-background-color: white;
+}
+
+NoteView {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.25), 10, 0.5, 0, 0);
+    -fx-padding: 5;
+}
+
+NoteView > Label {
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+NoteView TextFlow {
+    -fx-font-size: 14;
+    -fx-background-color: white;
+
+}
+
+ScrollPane {
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-background-color: transparent;
+    -fx-vbar-policy: never;
+}
+
+#Notes {
+    -fx-padding: 10 0 10 0;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-row-valignment: center;
+}
+
+TagLabel {
+    -fx-font-weight: normal;
+    -fx-font-size: 12;
+}
