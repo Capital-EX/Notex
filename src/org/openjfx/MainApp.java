@@ -25,7 +25,6 @@ import org.openjfx.editor.NoteCreatorEvent;
 import org.openjfx.editor.NoteEditor;
 import org.openjfx.note.ColumnPane;
 import org.openjfx.note.Note;
-import org.openjfx.note.NoteLayout;
 import org.openjfx.note.NoteView;
 import org.openjfx.tags.Tag;
 import org.openjfx.tags.TagContextMenu;
@@ -40,8 +39,7 @@ public class MainApp extends Application {
     private ObservableList<Tag> tags = FXCollections.observableArrayList();
     private NoteCreator newNote = new NoteCreator();
     private NoteEditor editNote = new NoteEditor();
-    private ColumnPane ffpane = new ColumnPane();
-    private NoteLayout noteLayout = new NoteLayout();
+    private ColumnPane noteLayout = new ColumnPane();
     private StackPane rootPane = new StackPane();
     private TagListView tagList = new TagListView();
     private TagContextMenu menu = new TagContextMenu();
