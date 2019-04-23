@@ -25,6 +25,7 @@ import org.openjfx.editor.NoteCreatorEvent;
 import org.openjfx.editor.NoteEditor;
 import org.openjfx.note.ColumnPane;
 import org.openjfx.note.Note;
+import org.openjfx.note.NoteLayout;
 import org.openjfx.note.NoteView;
 import org.openjfx.tags.Tag;
 import org.openjfx.tags.TagContextMenu;
@@ -40,6 +41,7 @@ public class MainApp extends Application {
     private NoteCreator newNote = new NoteCreator();
     private NoteEditor editNote = new NoteEditor();
     private ColumnPane ffpane = new ColumnPane();
+    private NoteLayout noteLayout = new NoteLayout();
     private StackPane rootPane = new StackPane();
     private TagListView tagList = new TagListView();
     private TagContextMenu menu = new TagContextMenu();
@@ -51,7 +53,7 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         // flowPane.setId("Notes");
         var noteView = new BorderPane();
-        var scrollView = new ScrollPane(ffpane);
+        var scrollView = new ScrollPane(noteLayout);
         noteView.setCenter(scrollView);
         noteView.setLeft(tagList);
         noteView.setTop(newNote);
@@ -133,8 +135,7 @@ public class MainApp extends Application {
                 };
                 noteEditorPlayTransition(startX, startY, NOTE_SIZE, NOTE_SIZE, endX, endY, endWidth, endHeight, callback);
             });
-            ffpane.getChildren().add(view);
-            TilePane.setMargin(view, new Insets(0, 0, view.getHeight(), 0));
+            noteLayout.addNode(view);
             notes.add(note);
         });
 

@@ -5,19 +5,18 @@ import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class NoteLayout extends FlowPane {
+public class ColumnPane extends FlowPane {
     private ArrayList<Node> nodes = new ArrayList<>();
     private int columnCount = -1;
     private int oldColumnCount = -2;
     private double columnWidth = 125;
     private double hgap;
 
-    public NoteLayout() {
+    public ColumnPane() {
         widthProperty().addListener((observable, oldValue, newValue) -> {
             updateColumns(false);
         });
@@ -78,8 +77,25 @@ public class NoteLayout extends FlowPane {
         oldColumnCount = columnCount;
     }
 
-    public void addNode(Node view) {
-        nodes.add(view);
+    public void addNode(Node node) {
+        nodes.add(node);
         updateColumns(true);
+    }
+
+    public void removeNode(Node node) {
+        // Guard against nodes this layout does not own
+        if (nodes.contains(node))
+            return;
+
+
+        /*
+            [1] Remove the node from the ArrayList nodes
+                [1.a] Record it's index position (i)
+            [3] Remove the node from it's parent node (node.getParent())
+            [4] Remove nodes after i from parents
+                [4.a] recalculate heights of columns
+            [5] Relayout nodes i .. nodes.length
+         */
+
     }
 }
